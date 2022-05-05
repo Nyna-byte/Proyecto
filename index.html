@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/draganddrop.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form name="formulario" action="calculo.php" method="POST">
+            <label for="cantidad">Cantidad a producir</label>
+            <input type="text" name="cantidad" id="cantidad" name="cantidad" required><br>
+            <label for="tiempoTrabajo">Minutos por día de trabajo</label>
+            <input type="text" name="tiempo" id="tiempo" name="tiempo" required><br>
+            <br>
+
+            <table id="table">
+                <thead>
+                    <tr>
+                        <td>Nº fase</td>
+                        <td>Descripción fase</td>
+                        <td>Tipo máquina (dejar en blanco si es a mano)</td>
+                        <td>Accesorio</td>
+                        <td>TC</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" name="descripcion" id="descripcion"></td>
+                        <td><input type="text" name="maquina" id="maquina"></td>
+                        <td><input type="text" name="accesorio" id="accesorio"></td>
+                        <td><input type="text" name="TC[]" id="TC" required></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><input type="text" name="descripcion" id="descripcion"></td>
+                        <td><input type="text" name="maquina" id="maquina"></td>
+                        <td><input type="text" name="accesorio" id="accesorio"></td>
+                        <td><input type="text" name="TC[]" id="TC" required></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" id="nueva">Añadir fila</button>
+            <br>
+            <br>
+            <input type="submit" value="Calcular">
+        </form>
+    </div>
+</body>
+</html>
