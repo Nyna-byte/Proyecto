@@ -4,3 +4,37 @@ table{
 td{
     border: 1px dotted black;
 }
+
+tbody {
+  counter-reset: rowNumber;
+}
+
+tbody tr::before {
+  display: table-cell;
+  counter-increment: rowNumber;
+  content: counter(rowNumber) ".";
+  padding-right: 0.3em;
+  text-align: center;
+}
+
+.draggable-table {
+	position: absolute;
+    border-collapse: collapse;
+    background: white;
+}
+  
+.draggable-table__drag {
+    position: absolute;
+    width: 100%;
+    text-indent: 50px;
+    z-index: 10;
+    cursor: grabbing;
+}
+
+tr {
+    cursor: grabbing;
+}
+
+tr.is-dragging {
+    background: #f1c40f;
+}
