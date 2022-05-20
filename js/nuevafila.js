@@ -29,6 +29,7 @@ function nuevafila(){
 	desc.setAttribute("type","text");
 	desc.id="descripcion";
 	desc.name="descripcion";
+	desc.title="descripcion"; //Para añadir el alt al campo de la tabla
 	cell1.appendChild(desc);
 
 	var maq=document.createElement("input");
