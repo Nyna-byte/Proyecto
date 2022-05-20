@@ -32,10 +32,14 @@ function nuevafila(){
 	desc.title="descripcion"; //Para añadir el alt al campo de la tabla
 	cell1.appendChild(desc);
 
-	var maq=document.createElement("input");
-	maq.setAttribute("type","text");
+	var maq=document.createElement("select");
 	maq.id="maquina";
 	maq.name="maquina";
+	cell2.appendChild(maq);
+	var option=document.createElement("option");
+	option.value="plana";
+	option.text="Plana";
+	maq.appendChild(option);
 	cell2.appendChild(maq);
 
 	var punt=document.createElement("input");
