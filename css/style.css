@@ -38,3 +38,7 @@ tr {
 tr.is-dragging {
     background: #f1c40f;
 }
+
+#revoluciones, #ppc {
+	width: 60px;
+}
