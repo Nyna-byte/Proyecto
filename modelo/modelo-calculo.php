@@ -1,6 +1,6 @@
 <?php 
 function calcOperarios($cantidad, $TCtotal, $tiempo) {
-	return ($cantidad*($TCtotal/100))/$tiempo;
+	return round(($cantidad*($TCtotal/100))/$tiempo);
 	//El tc entre 100 porque son centésimas de minuto
 }
 function calcEquilibrado($TCtotal, $operarios) {
