@@ -1,14 +1,18 @@
 <?php
 
-$cantidad=$_POST['cantidad'];
-$arrTC=$_POST['TC'];
-$tiempo=$_POST['tiempo']; 
-$TCtotal=0;
 
-require_once 'modelo-calculo.php';
 
-$TCtotal=calcTC($arrTC);
+require_once('../modelo/modelo-calculo.php');
 
-include_once 'vista-calculo.php';
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+	$cantidad=$_POST['cantidad'];
+	$arrTC=$_POST['TC'];
+	$tiempo=$_POST['tiempo']; 
+	$TCtotal=0;
+	$TCtotal=calcTC($arrTC);
+}
+
+require_once('../vista/vista-calculo.php');
+
 
 ?>

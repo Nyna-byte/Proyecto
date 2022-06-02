@@ -11,5 +11,6 @@ function calcTC($arrTC) {
 	for($i=0; $i<sizeof($arrTC); $i++){
 		$TCtotal+=$arrTC[$i];
 	}
+	return $TCtotal;
 }
 ?>

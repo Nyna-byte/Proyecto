@@ -1,4 +1,4 @@
-if (document.addEventListener){
+﻿if (document.addEventListener){
 	window.addEventListener("load", comienzo);
 }
 else if (document.attachEvent){
@@ -24,6 +24,7 @@ function nuevafila(){
 	var cell4 = row.insertCell(3);
 	var cell5 = row.insertCell(4);
 	var cell6 = row.insertCell(5);
+	var cell7 = row.insertCell(6);
 
 	var desc=document.createElement("input");
 	desc.setAttribute("type","text");
@@ -92,17 +93,18 @@ function nuevafila(){
 
 	var rev=document.createElement("input");
 	rev.setAttribute("type","text");
+	rev.setAttribute("disabled","true");
 	rev.id="revoluciones";
 	rev.name="revoluciones";
 	rev.title="revoluciones";
 	cell4.appendChild(rev);
 
-	var acc=document.createElement("input");
-	acc.setAttribute("type","text");
-	acc.id="accesorio";
-	acc.name="accesorio";
-	acc.title="accesorio";
-	cell5.appendChild(acc);
+	var ppc=document.createElement("input");
+	ppc.setAttribute("type","text");
+	ppc.id="ppc";
+	ppc.name="ppc";
+	ppc.title="ppc";
+	cell5.appendChild(ppc);
 
 	var tc=document.createElement("input");
 	tc.setAttribute("type","text");
@@ -111,4 +113,11 @@ function nuevafila(){
 	tc.name="TC[]";
 	tc.title="TC";
 	cell6.appendChild(tc);
+	
+	var obs=document.createElement("input");
+	obs.setAttribute("type","text");
+	obs.id="observaciones";
+	obs.name="observaciones";
+	obs.title="observaciones";
+	cell7.appendChild(obs);
 }
