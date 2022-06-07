@@ -1,8 +1,22 @@
+body{
+    font-family: 'Calibri';
+    font-size: 17px;
+    padding: 1em;
+    background-color: #dbffd0; /* Por poner algo de fondo ¯\_(ツ)_/¯ */
+}
+
+input, button, select{
+    font-size: 15px;
+    font-weight: normal;
+}
+
 table{
     border: 1px solid black;
 }
+
 td{
     border: 1px dotted black;
+    padding: .3em;
 }
 
 tbody {
