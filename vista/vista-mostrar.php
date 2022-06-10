@@ -1,8 +1,23 @@
 <?php
 
+?> 
+<br/>
+<p> Elige una prenda para mostrar su contenido:</p>
+<br/>
+<select name="table">
+<?php
+	foreach($tablas as $tabla) {
+		?> 
+			<option value="<?php echo $tabla['Tables_in_prendas']; ?>">
+			<?php echo $tabla['Tables_in_prendas']; ?>
+			</option>
+		<?php 
+	}
+?>
+</select>
+<br/><br/>
+<?php
 if(isset($TCtotal)&&$TCtotal!==0){
-    $operarios=calcOperarios($cantidad,$TCtotal,$tiempo); //El tc entre 100 porque son centésimas de minuto
-    $equilibrado=calcEquilibrado($TCtotal,$operarios);
     ?> 	
 	<link rel="stylesheet" href="../css/style.css">
 		<p>Nombre prenda: <?php echo $prenda;  ?></p>
@@ -48,12 +63,7 @@ if(isset($TCtotal)&&$TCtotal!==0){
 		?>
 <?php
 }
-else{  ?>
-		<p>No se han introducido tiempos</p>
-		<br/>
-<?php
-}
-	
+
 ?>
 <a href="../">Volver</a>
 
