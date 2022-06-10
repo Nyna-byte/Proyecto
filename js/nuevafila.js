@@ -24,18 +24,18 @@ function nuevafila(){
 	var cell4 = row.insertCell(3);
 	var cell5 = row.insertCell(4);
 	var cell6 = row.insertCell(5);
-	var cell7 = row.insertCell(6);
 
 	var desc=document.createElement("input");
 	desc.setAttribute("type","text");
+	desc.setAttribute("required", "");
 	desc.id="descripcion";
-	desc.name="descripcion";
+	desc.name="descripcion[]";
 	desc.title="descripcion"; //Para añadir el alt al campo de la tabla
 	cell1.appendChild(desc);
 
 	var maq=document.createElement("select");
 	maq.id="maquina";
-	maq.name="maquina";
+	maq.name="maquina[]";
 	maq.title="máquina";
 	cell2.appendChild(maq);
 	var option=document.createElement("option");
@@ -82,29 +82,25 @@ function nuevafila(){
 	option.value="Mano";
 	option.text="Mano";
 	maq.appendChild(option);
+	option=document.createElement("option");
+	option.value="Bajos";
+	option.text="Bajos";
+	maq.appendChild(option);
 	cell2.appendChild(maq);
-
-	var punt=document.createElement("input");
-	punt.setAttribute("type","text");
-	punt.id="punt";
-	punt.name="punt";
-	punt.title="puntada";
-	cell3.appendChild(punt);
 
 	var rev=document.createElement("input");
 	rev.setAttribute("type","text");
-	rev.setAttribute("disabled","true");
 	rev.id="revoluciones";
-	rev.name="revoluciones";
+	rev.name="revoluciones[]";
 	rev.title="revoluciones";
-	cell4.appendChild(rev);
+	cell3.appendChild(rev);
 
 	var ppc=document.createElement("input");
 	ppc.setAttribute("type","text");
 	ppc.id="ppc";
-	ppc.name="ppc";
+	ppc.name="ppc[]";
 	ppc.title="ppc";
-	cell5.appendChild(ppc);
+	cell4.appendChild(ppc);
 
 	var tc=document.createElement("input");
 	tc.setAttribute("type","text");
@@ -112,12 +108,12 @@ function nuevafila(){
 	tc.id="TC";
 	tc.name="TC[]";
 	tc.title="TC";
-	cell6.appendChild(tc);
+	cell5.appendChild(tc);
 	
 	var obs=document.createElement("input");
 	obs.setAttribute("type","text");
 	obs.id="observaciones";
-	obs.name="observaciones";
+	obs.name="observaciones[]";
 	obs.title="observaciones";
-	cell7.appendChild(obs);
+	cell6.appendChild(obs);
 }
