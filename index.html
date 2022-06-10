@@ -13,6 +13,8 @@
 <body>
     <div>
         <form name="formulario" action="./controlador/controlador-calculo.php" method="POST">
+	    <label for="nombre">Nombre de prenda</label>
+            <input type="text" name="nombre" id="nombre" name="nombre" required><br>
             <label for="cantidad">Cantidad a producir</label>
             <input type="text" name="cantidad" id="cantidad" name="cantidad" required><br>
             <label for="tiempoTrabajo">Minutos por día de trabajo</label>
@@ -31,18 +33,17 @@
                         <td>Nº fase</td>
                         <td>Descripción fase</td>
                         <td>Tipo máquina</td>
-                        <td>Punt</td>
                         <td>R.P.M.</td>
                         <td>PPC</td>
                         <td>TC</td>
 			<td>Observaciones</td>
                     </tr>
                 </thead>
-                <tbody>  <!-- Hacer los nombres como arrays-->
+                <tbody>  
                     <tr>
-                        <td><input type="text" name="descripcion" id="descripcion" title="descripcion"></td>
+                        <td><input type="text" name="descripcion[]" id="descripcion" title="descripcion"></td>
 			            <td>
-			            	<select name="maquina" id="maquina" title="maquina">
+			            	<select name="maquina[]" id="maquina" title="maquina">
 			            		<option value="Plana">Plana</option>
 			            		<option value="OW">O.W.</option>
 			            		<option value="OWPS">O.W + P.S</option>
@@ -57,16 +58,15 @@
 						<option value="Bajos">Bajos</option>
 			            	</select>
 			            </td>
-                        <td><input type="text" name="punt" id="punt" title="puntada" disabled="true"></td>
-                        <td><input type="text" name="revoluciones" id="revoluciones" title="revoluciones"></td>
-                        <td><input type="text" name="ppc" id="ppc" title="ppc"></td>
+                        <td><input type="text" name="revoluciones[]" id="revoluciones" title="revoluciones"></td>
+			<td><input type="text" name="ppc[]" id="ppc" title="ppc"></td>
                         <td><input type="text" name="TC[]" id="TC" title="TC" required></td>
-			<td><input type="text" name="observaciones" id="observaciones" title="observaciones"></td>
+			<td><input type="text" name="observaciones[]" id="observaciones" title="observaciones"></td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="descripcion" id="descripcion" title="descripcion"></td>
-			            <td>
-			            	<select name="maquina" id="maquina" title="maquina">
+                        <td><input type="text" name="descripcion[]" id="descripcion" title="descripcion"></td>
+			           <td>
+			         	<select name="maquina[]" id="maquina" title="maquina">
 			            		<option value="Plana">Plana</option>
 			            		<option value="OW">O.W.</option>
 			            		<option value="OWPS">O.W + P.S</option>
@@ -81,11 +81,10 @@
 						<option value="Bajos">Bajos</option>
 			            	</select>
 			            </td>
-                        <td><input type="text" name="punt" id="punt" title="puntada" disabled="true"></td>
-                        <td><input type="text" name="revoluciones" id="revoluciones" title="revoluciones"></td>
-                        <td><input type="text" name="ppc" id="ppc" title="ppc"></td>
+                        <td><input type="text" name="revoluciones[]" id="revoluciones" title="revoluciones"></td>
+			<td><input type="text" name="ppc[]" id="ppc" title="ppc"></td>
                         <td><input type="text" name="TC[]" id="TC" title="TC" required></td>
-			<td><input type="text" name="observaciones" id="observaciones" title="observaciones"></td>
+			<td><input type="text" name="observaciones[]" id="observaciones" title="observaciones"></td>
                     </tr>
                 </tbody>
             </table>
