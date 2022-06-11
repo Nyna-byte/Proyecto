@@ -26,7 +26,6 @@ if(isset($TCtotal)&&$TCtotal!==0){
 			<tbody>
 				<?php for($i=0;$i<count($arrDes);$i++) { ?>
 				<tr>
-					<td class="fase"><?php echo ($i+1); ?></td>
 					<td class="descripcion"><?php echo $arrDes[$i]; ?></td>
 					<td class="maquina"><?php echo $arrMaq[$i]; ?></td>
 					<td class="puntaje"><?php echo puntajeMaq($arrMaq[$i]); ?></td>

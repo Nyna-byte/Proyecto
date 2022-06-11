@@ -41,7 +41,6 @@ if(isset($prenda)){
 			<tbody>
 				<?php foreach($verPrenda as $paso ) { ?>
 				<tr>
-					<td class="fase"><?php echo $paso['n_fase']; ?></td>
 					<td class="descripcion"><?php echo $paso['descripcion_fase']; ?></td>
 					<td class="maquina"><?php echo $paso['maquina']; ?></td>
 					<td class="puntada"><?php echo $paso['puntada']; ?></td>
