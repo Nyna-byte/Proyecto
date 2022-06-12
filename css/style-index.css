@@ -23,6 +23,7 @@ tbody {
   counter-reset: rowNumber;
 }
 
+
 tbody tr::before {
   display: table-cell;
   counter-increment: rowNumber;
@@ -44,13 +45,15 @@ tbody tr::before {
     z-index: 10;
     cursor: grabbing;
 }
-tbody td, thead{
-    border: 1px dotted black;
-	text-align: center;
+
+tr {
+    cursor: grabbing;
 }
-tbody td.observaciones, tbody td.descripcion{
-	text-align: left;
+
+tr.is-dragging {
+    background: #f1c40f;
 }
+
 #revoluciones,#ppc {
 	width: 60px;
 }
@@ -71,6 +74,6 @@ tbody td.observaciones, tbody td.descripcion{
 	padding: 10px;
 }
 
-#header ~ div {
+#header ~ div  {
 	padding-top: 8%;
 }

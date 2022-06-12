@@ -1,12 +1,5 @@
 <?php 
 
-function calcTC($arrTC) {
-	$TCtotal=0;
-	for($i=0; $i<sizeof($arrTC); $i++){
-		$TCtotal+=$arrTC[$i];
-	}
-	return $TCtotal;
-}
 function obtenerPrenda($conn,$nombre) {
 	try {
 		$sql=$conn->prepare("select * from $nombre ");
@@ -24,7 +17,7 @@ function obtenerTablas($conn) {
 		$sql -> setFetchMode(PDO::FETCH_ASSOC);
 		return $sql;
 	}catch(PDOException $e) {
-		return "No hay prenda</br>";
+		return "No hay prendas</br>";
 	}
 }
 

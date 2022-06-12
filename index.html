@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-index.css">
     <script src="./js/draganddrop.js"></script>
     <script src="./js/nuevafila.js"></script>
-    <script src="./js/puntada.js"></script>
     <title>Document</title>
 </head>
 <body>
+	<header id="header">
+		<nav id="nav">
+			<ul>
+				<li><a href="#">Inicio</a></li>
+				<li><a href="./">Crear prenda</a></li>
+				<li><a href="controlador/controlador-mostrar.php">Mostrar prenda</a></li>
+				<li><a href="controlador/controlador-calculo.php">Calcular prenda</a></li>
+			</ul>
+		</nav>
+	</header>
     <div>
-        <form name="formulario" action="./controlador/controlador-calculo.php" method="POST">
-	    <label for="nombre">Nombre de prenda</label>
+		<br/>
+        <form name="formulario" action="./controlador/controlador-crear.php" method="POST">
+			<label for="nombre">Nombre de prenda</label>
             <input type="text" name="nombre" id="nombre" name="nombre" required><br>
-            <label for="cantidad">Cantidad a producir</label>
-            <input type="text" name="cantidad" id="cantidad" name="cantidad" required><br>
-            <label for="tiempoTrabajo">Minutos por día de trabajo</label>
-            <input type="text" name="tiempo" id="tiempo" name="tiempo" required><br>
             <br>
             <button type="button" id="nueva">Añadir fila</button>
             <br>
             <br>
-            <input type="submit" value="Calcular">
+            <input type="submit" value="Crear">
             <br>
             <br>
 
@@ -36,10 +42,10 @@
                         <td>R.P.M.</td>
                         <td>PPC</td>
                         <td>TC</td>
-			<td>Observaciones</td>
+						<td>Observaciones</td>
                     </tr>
                 </thead>
-                <tbody>  
+                <tbody>  <!-- Hacer los nombres como arrays-->
                     <tr>
                         <td><input type="text" name="descripcion[]" id="descripcion" title="descripcion"></td>
 			            <td>
@@ -55,18 +61,18 @@
 			            		<option value="Ojales">Ojales</option>
 			            		<option value="Botones">Botones</option>
 			            		<option value="Mano">Mano</option>
-						<option value="Bajos">Bajos</option>
+								<option value="Bajos">Bajos</option>
 			            	</select>
 			            </td>
                         <td><input type="text" name="revoluciones[]" id="revoluciones" title="revoluciones"></td>
-			<td><input type="text" name="ppc[]" id="ppc" title="ppc"></td>
+						<td><input type="text" name="ppc[]" id="ppc" title="ppc"></td>
                         <td><input type="text" name="TC[]" id="TC" title="TC" required></td>
-			<td><input type="text" name="observaciones[]" id="observaciones" title="observaciones"></td>
+						<td><input type="text" name="observaciones[]" id="observaciones" title="observaciones"></td>
                     </tr>
                     <tr>
                         <td><input type="text" name="descripcion[]" id="descripcion" title="descripcion"></td>
-			           <td>
-			         	<select name="maquina[]" id="maquina" title="maquina">
+			            <td>
+			            	<select name="maquina[]" id="maquina" title="maquina">
 			            		<option value="Plana">Plana</option>
 			            		<option value="OW">O.W.</option>
 			            		<option value="OWPS">O.W + P.S</option>
@@ -78,13 +84,13 @@
 			            		<option value="Ojales">Ojales</option>
 			            		<option value="Botones">Botones</option>
 			            		<option value="Mano">Mano</option>
-						<option value="Bajos">Bajos</option>
+								<option value="Bajos">Bajos</option>
 			            	</select>
 			            </td>
                         <td><input type="text" name="revoluciones[]" id="revoluciones" title="revoluciones"></td>
-			<td><input type="text" name="ppc[]" id="ppc" title="ppc"></td>
+						<td><input type="text" name="ppc[]" id="ppc" title="ppc"></td>
                         <td><input type="text" name="TC[]" id="TC" title="TC" required></td>
-			<td><input type="text" name="observaciones[]" id="observaciones" title="observaciones"></td>
+						<td><input type="text" name="observaciones[]" id="observaciones" title="observaciones"></td>
                     </tr>
                 </tbody>
             </table>
