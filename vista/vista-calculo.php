@@ -9,7 +9,10 @@ if(isset($TCtotal)&&$TCtotal!==0){
 		<br/>
 		<p>Número de operiarios: <?php echo $operarios;  ?></p>
 		<br/>
-		<p>Base de equilibrado: <?php echo $equilibrado; ?></p>
+		<p>Base de equilibrado: <span id="base"><?php echo $equilibrado; ?></span></p>
+		<br/>
+		<p>Cantidad de máquinas:</p>
+		<div id="listamaquinas"></div>
 		<table id="table">
 			<thead>
 				<tr>
@@ -59,3 +62,5 @@ else{  ?>
 <?php
 $conn=null;
 ?>
+
+<script src="../js/calculomaquinas.js"></script>

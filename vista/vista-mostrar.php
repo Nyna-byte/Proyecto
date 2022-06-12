@@ -58,3 +58,5 @@ if(isset($prenda)){
 
 $conn=null;
 ?>
+
+<script src="../js/calculomaquinas.js"></script>
