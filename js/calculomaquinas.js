@@ -12,7 +12,6 @@ function onlyUnique(value, index, self) { // Función para el filtro, devuelve v
 function calculomaquinas() {
     let tabla=document.querySelector("#table");
     let filas=tabla.getElementsByTagName("tr");
-	console.log(document.getElementById('base'));
     let base=document.getElementById('base').innerHTML;
     // Seleccionamos todos los nombres de máquinas en la tabla
     let selects=tabla.querySelectorAll(".maquina");

@@ -39,8 +39,6 @@
 	<?php } ?>
 	<?php
 	if(isset($_POST["calcularPrenda"])&&$tiempo!=0&&$cantidad!=0) { 
-		$operarios=calcOperarios($cantidad,$TCtotal,$tiempo); //El tc entre 100 porque son centésimas de minuto
-		$equilibrado=calcEquilibrado($TCtotal,$operarios);
 	?>
 	<p>Nombre prenda: <?php echo $nombre;  ?></p>
 	<p>Número de operiarios: <?php echo $operarios;  ?></p>
