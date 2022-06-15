@@ -28,7 +28,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 $tablas=obtenerTablas($conn);
 
-require_once('../vista/vista-calculo.php');
 
 function calcOperarios($cantidad, $TCtotal, $tiempo) {
 	return round(($cantidad*($TCtotal/100))/$tiempo);
@@ -69,14 +68,15 @@ function puntajeMaq($maquina) {
 			break;
 	}
 }
-function calcTablaEquilibrado($operarios, $calcEquilibrado, $prenda){
+function calcTablaEquilibrado($operarios, $equilibrado, $prenda){
 	$maquinas=[];
 	$tcs=[];
 	$nfases=[];
+	$calcEquilibrado=(float)number_format($equilibrado, 7);
 	foreach($prenda as $paso ){
 		array_push($maquinas, $paso['maquina']);
-		array_push($maquinas, (int)$paso['tc']);
-		array_push($maquinas, (int)$paso['n_fase']);
+		array_push($tcs, (int)$paso['tc']);
+		array_push($nfases, (int)$paso['n_fase']);
 	}
 
 	$arrOperarios=[];
@@ -84,14 +84,30 @@ function calcTablaEquilibrado($operarios, $calcEquilibrado, $prenda){
 		$operario=array();
 		$tcOperario=0;
 		do {
+			$tcOperario=0;
 			$maquinaOperario=null;
 			for($j=0; $j<sizeof($nfases); $j++){
 				$fase=$nfases[$j]-1;
 				if($maquinaOperario===null && $tcOperario===0){
-					$maquinaOperario=$maquinas[$fase];
-					$tcOperario+=$tcs[$fase];
-					array_push($operario, $fase);
-					array_splice($nfases, $j, 1);
+					$resto=$tcs[$fase]-($calcEquilibrado-$tcOperario);
+					if((float)bcdiv($resto, '1', 6)==0){
+						$tcOperario=$calcEquilibrado;
+						array_push($operario, $fase);
+						$maquinaOperario=$maquinas[$fase];
+						array_splice($nfases, $j, 1);
+					}
+					else if($resto<0){
+						$tcOperario+=$tcs[$fase];
+						array_push($operario, $fase);
+						$maquinaOperario=$maquinas[$fase];
+						array_splice($nfases, $j, 1);
+					}
+					else{
+						$tcs[$fase]=$resto;
+						array_push($operario, $fase);
+						$maquinaOperario=$maquinas[$fase];
+						$tcOperario=$calcEquilibrado;
+					}
 				}
 				else if($tcOperario+$tcs[$fase]<=$calcEquilibrado && $maquinaOperario===$maquinas[$fase]){
 					$tcOperario+=$tcs[$fase];
@@ -101,6 +117,7 @@ function calcTablaEquilibrado($operarios, $calcEquilibrado, $prenda){
 				else if($tcOperario+$tcs[$fase]>$calcEquilibrado && $maquinaOperario===$maquinas[$fase]){
 					$resto=$tcs[$fase]-($calcEquilibrado-$tcOperario);
 					$tcs[$fase]=$resto;
+					$tcOperario=$calcEquilibrado;
 					array_push($operario, $fase);
 				}
 			}
@@ -133,12 +150,14 @@ function datosTablaEquilibrado($arrOperarios, $nombre, $conn){
 	foreach ($arrOperarios as $operario) {
 		$fasesOperario=[];
 		foreach ($operario as $fase) {
-			$datosFase=obtenerFase($conn, $nombre, $fase);
+			$datosFase=obtenerFase($conn, $nombre, $fase+1);
 			array_push($fasesOperario, $datosFase);
 		}
 		array_push($arrFases, $fasesOperario);
 	}
 	return $arrFases;
 }
+
+require_once('../vista/vista-calculo.php');
 
 ?>

@@ -73,6 +73,43 @@
 	</tbody>
 	</table>
 	<br/> 
+	<table>
+		<thead>
+			<tr>
+				<td>Nº operario</td>
+				<td>Descripción fase</td>
+				<td>TC</td>
+				<td>Tipo máquina</td>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach($equilibradoOperarios as $operario){ ?>
+
+				<tr>
+					<td rowspan="<?php echo htmlspecialchars(sizeof($operario)); ?>">
+						<?php foreach($operario as $fase){
+							echo $fase[0]['descripcion_fase'];
+							echo "<br>";
+						} ?>
+					</td>
+					<td>
+						<?php foreach($operario as $fase){
+							echo $fase[0]['tc'];
+							echo "<br>";
+						} ?>
+					</td>
+					<td>
+						<?php foreach($operario as $fase){
+							echo $fase[0]['maquina'];
+							echo "<br>";
+						} ?>
+					</td>
+				</tr>
+
+			<?php } ?>
+		</tbody>
+	</table>
+	<script src="../js/calculomaquinas.js"></script>
 	<?php 
 	} else if(isset($_POST["mostrarPrenda"])) {
 	?>
@@ -111,4 +148,3 @@
 <?php
 $conn=null;
 ?>
-<script src="../js/calculomaquinas.js"></script>
