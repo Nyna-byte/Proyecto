@@ -22,11 +22,12 @@
 		<br/><br/>
 		<div>
 			<input type="submit" value="Consultar" name="consultarPrenda">
+			<input type="submit" value="Borrar prenda" name="borrarPrenda">
 		</div>
 		<br/>
 	</form>
 	<?php
-	if(isset($prenda)){
+	if(isset($_POST["consultarPrenda"])){
     ?> 	
 	<p>Nombre prenda: <?php echo $prenda;  ?></p>
 	<table id="table">
@@ -58,6 +59,11 @@
 	</table>
 	<br/>
 	<?php } ?>
+	<?php
+	if(isset($_POST["borrarPrenda"])){
+		echo $mensaje;
+	}
+    ?> 
 </div>
 <?php
 $conn=null;

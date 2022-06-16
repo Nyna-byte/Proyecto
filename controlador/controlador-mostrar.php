@@ -9,6 +9,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$prenda=$_POST["table"];
 		$verPrenda=obtenerPrenda($conn,$prenda);
 	}
+	else if(isset($_POST["borrarPrenda"])){
+		$prenda=$_POST["table"];
+		$mensaje=borrarPrenda($conn,$prenda);
+	}
 }
 $tablas=obtenerTablas($conn);
 require_once('../vista/vista-mostrar.php');

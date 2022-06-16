@@ -29,6 +29,8 @@ tbody tr::before {
   content: counter(rowNumber) ".";
   padding-right: 0.3em;
   text-align: center;
+  vertical-align: middle;
+  border: 1px dotted black;
 }
 
 .draggable-table {

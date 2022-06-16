@@ -20,5 +20,14 @@ function obtenerTablas($conn) {
 		return "No hay prendas</br>";
 	}
 }
+function borrarPrenda($conn, $nombre){
+	try {
+		$sql=$conn->prepare("drop table $nombre ");
+		$sql -> execute();
+		return "Prenda borrada con éxito</br>";
+	}catch(PDOException $e) {
+		return "No hay prenda</br>";
+	}
+}
 
 ?>
