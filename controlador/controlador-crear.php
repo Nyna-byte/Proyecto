@@ -24,7 +24,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	header('../index.html');
 }
 
-
+function puntajeMaq($maquina) {
+	switch($maquina) {
+		case "Plana":
+			return "301";
+			break;
+		case "OW":
+			return "504";
+			break;
+		case "OWPS":
+			return "511";
+			break;
+		case "Cadeneta":
+			return "111";
+			break;
+		case "Zig-zag":
+			return "304";
+			break;
+		case "Bajos":
+			return "103";
+			break;
+		default:
+			return "-";
+			break;
+	}
+}
 
 
 ?>

@@ -39,7 +39,7 @@ function nuevafila(){
 	maq.title="máquina";
 	cell2.appendChild(maq);
 	var option=document.createElement("option");
-	option.value="plana";
+	option.value="Plana";
 	option.text="Plana";
 	maq.appendChild(option);
 	option=document.createElement("option");

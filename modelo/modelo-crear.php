@@ -1,30 +1,5 @@
 <?php 
 
-function puntajeMaq($maquina) {
-	switch($maquina) {
-		case "Plana":
-			return "301";
-			break;
-		case "OW":
-			return "504";
-			break;
-		case "OWPS":
-			return "511";
-			break;
-		case "Cadeneta":
-			return "111";
-			break;
-		case "Zig-zag":
-			return "304";
-			break;
-		case "Bajos":
-			return "103";
-			break;
-		default:
-			return "-";
-			break;
-	}
-}
 function crearTablaPrenda($conn,$nombre) {
 	try {
 		$sql = "CREATE TABLE ".$nombre." (n_fase int(3) PRIMARY KEY, descripcion_fase varchar(20) not null, maquina varchar(20) not null, puntada varchar(20), rpm varchar(10), ppc varchar(10), tc varchar(10) not null, observaciones varchar(80)) ENGINE=InnoDB";
