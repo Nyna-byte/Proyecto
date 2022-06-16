@@ -72,11 +72,13 @@ function calcTablaEquilibrado($operarios, $equilibrado, $prenda){
 	$maquinas=[];
 	$tcs=[];
 	$nfases=[];
+	$faseCompletada=[];
 	$calcEquilibrado=(float)number_format($equilibrado, 7);
 	foreach($prenda as $paso ){
 		array_push($maquinas, $paso['maquina']);
 		array_push($tcs, (int)$paso['tc']);
 		array_push($nfases, (int)$paso['n_fase']);
+		array_push($faseCompletada, false);
 	}
 
 	$arrOperarios=[];
@@ -84,57 +86,40 @@ function calcTablaEquilibrado($operarios, $equilibrado, $prenda){
 		$operario=array();
 		$tcOperario=0;
 		do {
-			$tcOperario=0;
 			$maquinaOperario=null;
 			for($j=0; $j<sizeof($nfases); $j++){
-				$fase=$nfases[$j]-1;
-				if($maquinaOperario===null && $tcOperario===0){
-					$resto=$tcs[$fase]-($calcEquilibrado-$tcOperario);
-					if((float)bcdiv($resto, '1', 6)==0){
+				if(!$faseCompletada[$j]){
+					if($maquinaOperario===null){
+						$resto=$tcs[$j]-($calcEquilibrado-$tcOperario);
+						if((float)bcdiv($resto, '1', 6)==0){
+							$tcOperario=$calcEquilibrado;
+							array_push($operario, $j);
+							$maquinaOperario=$maquinas[$j];
+							$faseCompletada[$j]=true;
+						}
+						else if($resto<0){
+							$tcOperario+=$tcs[$j];
+							array_push($operario, $j);
+							$maquinaOperario=$maquinas[$j];
+							$faseCompletada[$j]=true;
+						}
+						else{
+							$tcs[$j]=$resto;
+							array_push($operario, $j);
+							$maquinaOperario=$maquinas[$j];
+							$tcOperario=$calcEquilibrado;
+						}
+					}
+					else if($tcOperario+$tcs[$j]<=$calcEquilibrado && $maquinaOperario===$maquinas[$j]){
+						$tcOperario+=$tcs[$j];
+						array_push($operario, $j);
+						$faseCompletada[$j]=true;
+					}
+					else if($tcOperario+$tcs[$j]>$calcEquilibrado && $maquinaOperario===$maquinas[$j] && $tcOperario<$calcEquilibrado){
+						$resto=$tcs[$j]-($calcEquilibrado-$tcOperario);
+						$tcs[$j]=$resto;
 						$tcOperario=$calcEquilibrado;
-						array_push($operario, $fase);
-						$maquinaOperario=$maquinas[$fase];
-						array_splice($nfases, $j, 1);
-					}
-					else if($resto<0){
-						$tcOperario+=$tcs[$fase];
-						array_push($operario, $fase);
-						$maquinaOperario=$maquinas[$fase];
-						array_splice($nfases, $j, 1);
-					}
-					else{
-						$tcs[$fase]=$resto;
-						array_push($operario, $fase);
-						$maquinaOperario=$maquinas[$fase];
-						$tcOperario=$calcEquilibrado;
-					}
-				}
-				else if($tcOperario+$tcs[$fase]<=$calcEquilibrado && $maquinaOperario===$maquinas[$fase]){
-					$tcOperario+=$tcs[$fase];
-					array_push($operario, $fase);
-					array_splice($nfases, $j, 1);
-				}
-				else if($tcOperario+$tcs[$fase]>$calcEquilibrado && $maquinaOperario===$maquinas[$fase]){
-					$resto=$tcs[$fase]-($calcEquilibrado-$tcOperario);
-					$tcs[$fase]=$resto;
-					$tcOperario=$calcEquilibrado;
-					array_push($operario, $fase);
-				}
-			}
-			// Así se da prioridad a que un empleado esté en una sola máquina
-            // Si tras recorrer el array de fases entero no tiene suficiente TC entonces toma parte de la primera fase que haya
-			if($maquinaOperario===null || $tcOperario<$calcEquilibrado){
-				for($j=0; $j<sizeof($nfases); $j++){
-					$fase=$nfases[$j]-1;
-					$resto=$tcs[$fase]-($calcEquilibrado-$tcOperario);
-					if($resto<=0){
-						$tcOperario+=$tcs[$fase];
-						array_push($operario, $fase);
-						array_splice($nfases, $j, 1);
-					}
-					else{
-						$tcs[$fase]=$resto;
-						array_push($operario, $fase);
+						array_push($operario, $j);
 					}
 				}
 			}

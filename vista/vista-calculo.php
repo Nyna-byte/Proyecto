@@ -86,7 +86,7 @@
 			<?php foreach($equilibradoOperarios as $operario){ ?>
 
 				<tr>
-					<td rowspan="<?php echo htmlspecialchars(sizeof($operario)); ?>">
+					<td>
 						<?php foreach($operario as $fase){
 							echo $fase[0]['descripcion_fase'];
 							echo "<br>";
