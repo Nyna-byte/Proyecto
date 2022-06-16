@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$mensaje=borrarPrenda($conn,$prenda);
 	}
 }
-$tablas=obtenerTablas($conn);
+$listaPrendas=obtenerPrendas($conn);
 require_once('../vista/vista-mostrar.php');
 
 

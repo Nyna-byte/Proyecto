@@ -31,7 +31,7 @@ function calculomaquinas() {
                 sumatiempos+=valor;
             }
         }
-        let nmaquinas=Math.round(sumatiempos/base);
+        let nmaquinas=Math.ceil(sumatiempos/base);
         // Muestra la cantidad de máquinas en el div listamaquinas
         let linea=document.createElement("p");
         let textNode = document.createTextNode("- "+maquinas[i]+": "+nmaquinas);

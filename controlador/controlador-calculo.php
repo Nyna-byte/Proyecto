@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$equilibradoOperarios=datosTablaEquilibrado($arrOperarios, $nombre, $conn);
 	}
 }
-$tablas=obtenerTablas($conn);
+$listadoPrendas=obtenerPrendas($conn);
 
 
 function calcOperarios($cantidad, $TCtotal, $tiempo) {
@@ -73,7 +73,7 @@ function calcTablaEquilibrado($operarios, $equilibrado, $prenda){
 	$tcs=[];
 	$nfases=[];
 	$faseCompletada=[];
-	$calcEquilibrado=(float)number_format($equilibrado, 7);
+	$calcEquilibrado=(float)number_format($equilibrado, 5);
 	foreach($prenda as $paso ){
 		array_push($maquinas, $paso['maquina']);
 		array_push($tcs, (int)$paso['tc']);
@@ -91,7 +91,7 @@ function calcTablaEquilibrado($operarios, $equilibrado, $prenda){
 				if(!$faseCompletada[$j]){
 					if($maquinaOperario===null){
 						$resto=$tcs[$j]-($calcEquilibrado-$tcOperario);
-						if((float)bcdiv($resto, '1', 6)==0){
+						if((float)bcdiv($resto, '1', 4)==0){
 							$tcOperario=$calcEquilibrado;
 							$operario[$j]=$tcs[$j];
 							$maquinaOperario=$maquinas[$j];

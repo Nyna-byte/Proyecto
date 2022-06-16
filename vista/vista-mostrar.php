@@ -10,10 +10,10 @@
 	<form id="formulario" name="formulario" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>" >
 		<select name="table">
 		<?php
-			foreach($tablas as $tabla) {
+			foreach($listaPrendas as $nombrePrenda) {
 				?> 
-					<option value="<?php echo $tabla['Tables_in_prendas']; ?>">
-					<?php echo $tabla['Tables_in_prendas']; ?>
+					<option value="<?php echo $nombrePrenda['nombre_prenda']; ?>">
+					<?php echo $nombrePrenda['nombre_prenda']; ?>
 					</option>
 				<?php 
 			}

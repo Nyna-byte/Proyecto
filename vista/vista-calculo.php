@@ -19,10 +19,10 @@
 		<label> Elige la prenda sobre la que calcular:</label>
 		<select name="table">
 		<?php
-			foreach($tablas as $tabla) {
+			foreach($listadoPrendas as $nombrePrenda) {
 				?> 
-					<option value="<?php echo $tabla['Tables_in_prendas']; ?>">
-					<?php echo $tabla['Tables_in_prendas']; ?>
+					<option value="<?php echo $nombrePrenda['nombre_prenda']; ?>">
+					<?php echo $nombrePrenda['nombre_prenda']; ?>
 					</option>
 				<?php 
 			} ?>

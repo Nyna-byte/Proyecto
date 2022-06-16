@@ -14,11 +14,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$arrTC=$_POST['TC'];
 	$arrObs=$_POST['observaciones'];
 	
-	//Crear tabla e insertar datos
-	crearTablaPrenda($conn,$prenda);
-	for($i=0;$i<count($arrDes);$i++) {
-		altaPasoPrenda($conn,$prenda,($i+1),$arrDes[$i],$arrMaq[$i],$arrRPM[$i],$arrPPC[$i],$arrTC[$i],$arrObs[$i]);
+	
+	//Comprobar si ya existe una prenda con ese nombre
+	$count = comprobarNombre($conn,$prenda);
+
+	if($count[0]['count(*)'] > 0){
+		echo "Ya existe una prenda con ese nombre. <br>";
 	}
+	else{
+		//Insertar datos
+		for($i=0;$i<count($arrDes);$i++) {
+			altaPasoPrenda($conn,$prenda,($i+1),$arrDes[$i],$arrMaq[$i],$arrRPM[$i],$arrPPC[$i],$arrTC[$i],$arrObs[$i]);
+		}
+	}
+	
 	require_once('../vista/vista-crear.php');
 } else {
 	header('../index.html');
