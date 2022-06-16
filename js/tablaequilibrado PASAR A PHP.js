@@ -43,7 +43,7 @@ function calculartabla(){
                         tcs[j]=null;
                     }
                     else if(tcOperario+tcs[j]>base && maquinaOperario===nombreMaquinas[j]){
-                        let resto=tcs[j]-(base.tcOperario);
+                        let resto=tcs[j]-(base-tcOperario);
                         tcs[j]=resto;
                         filas[j-1].querySelector(".maquina").innerHTML=resto;
                         fasesOperario.push(filas[j-1]);

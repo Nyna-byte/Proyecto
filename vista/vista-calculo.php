@@ -39,8 +39,6 @@
 	<?php } ?>
 	<?php
 	if(isset($_POST["calcularPrenda"])&&$tiempo!=0&&$cantidad!=0) { 
-		$operarios=calcOperarios($cantidad,$TCtotal,$tiempo); //El tc entre 100 porque son centésimas de minuto
-		$equilibrado=calcEquilibrado($TCtotal,$operarios);
 	?>
 	<p>Nombre prenda: <?php echo $nombre;  ?></p>
 	<p>Número de operiarios: <?php echo $operarios;  ?></p>
@@ -75,6 +73,43 @@
 	</tbody>
 	</table>
 	<br/> 
+	<table>
+		<thead>
+			<tr>
+				<td>Nº operario</td>
+				<td>Descripción fase</td>
+				<td>TC</td>
+				<td>Tipo máquina</td>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach($equilibradoOperarios as $operario){ ?>
+
+				<tr>
+					<td>
+						<?php foreach($operario as $fase){
+							echo $fase[0]['descripcion_fase'];
+							echo "<br>";
+						} ?>
+					</td>
+					<td>
+						<?php foreach($operario as $fase){
+							echo $fase[0]['tc'];
+							echo "<br>";
+						} ?>
+					</td>
+					<td>
+						<?php foreach($operario as $fase){
+							echo $fase[0]['maquina'];
+							echo "<br>";
+						} ?>
+					</td>
+				</tr>
+
+			<?php } ?>
+		</tbody>
+	</table>
+	<script src="../js/calculomaquinas.js"></script>
 	<?php 
 	} else if(isset($_POST["mostrarPrenda"])) {
 	?>
@@ -113,4 +148,3 @@
 <?php
 $conn=null;
 ?>
-<script src="../js/calculomaquinas.js"></script>

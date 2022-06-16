@@ -12,7 +12,6 @@ function onlyUnique(value, index, self) { // Función para el filtro, devuelve v
 function calculomaquinas() {
     let tabla=document.querySelector("#table");
     let filas=tabla.getElementsByTagName("tr");
-	console.log(document.getElementById('base'));
     let base=document.getElementById('base').innerHTML;
     // Seleccionamos todos los nombres de máquinas en la tabla
     let selects=tabla.querySelectorAll(".maquina");
@@ -35,7 +34,7 @@ function calculomaquinas() {
         let nmaquinas=Math.round(sumatiempos/base);
         // Muestra la cantidad de máquinas en el div listamaquinas
         let linea=document.createElement("p");
-        let textNode = document.createTextNode(maquinas[i]+": "+nmaquinas);
+        let textNode = document.createTextNode("- "+maquinas[i]+": "+nmaquinas);
         linea.appendChild(textNode);
         contenedor.appendChild(linea);
     }
