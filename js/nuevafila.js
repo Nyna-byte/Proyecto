@@ -89,22 +89,25 @@ function nuevafila(){
 	cell2.appendChild(maq);
 
 	var rev=document.createElement("input");
-	rev.setAttribute("type","text");
+	rev.setAttribute("type","number");
+	rev.setAttribute("min", "1");
 	rev.id="revoluciones";
 	rev.name="revoluciones[]";
 	rev.title="revoluciones";
 	cell3.appendChild(rev);
 
 	var ppc=document.createElement("input");
-	ppc.setAttribute("type","text");
+	ppc.setAttribute("type","number");
+	ppc.setAttribute("min", "1");
 	ppc.id="ppc";
 	ppc.name="ppc[]";
 	ppc.title="ppc";
 	cell4.appendChild(ppc);
 
 	var tc=document.createElement("input");
-	tc.setAttribute("type","text");
+	tc.setAttribute("type","number");
 	tc.setAttribute("required", "");
+	tc.setAttribute("min", "1");
 	tc.id="TC";
 	tc.name="TC[]";
 	tc.title="TC";

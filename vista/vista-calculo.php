@@ -13,9 +13,9 @@
 	<form id="formulario" name="formulario" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>" >
 		<br/>
 		<label for="cantidad">Cantidad a producir</label>
-		<input type="text" name="cantidad" id="cantidad" name="cantidad" value="0" required><br><br>
+		<input type="number" name="cantidad" id="cantidad" name="cantidad" value="1" min="1" required><br><br>
 		<label for="tiempoTrabajo">Minutos por día de trabajo</label>
-		<input type="text" name="tiempo" id="tiempo" name="tiempo" value="0" required><br><br>
+		<input type="number" name="tiempo" id="tiempo" name="tiempo" value="1" min="1" required><br><br>
 		<label> Elige la prenda sobre la que calcular:</label>
 		<select name="table">
 		<?php
