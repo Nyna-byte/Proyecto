@@ -93,33 +93,33 @@ function calcTablaEquilibrado($operarios, $equilibrado, $prenda){
 						$resto=$tcs[$j]-($calcEquilibrado-$tcOperario);
 						if((float)bcdiv($resto, '1', 6)==0){
 							$tcOperario=$calcEquilibrado;
-							array_push($operario, $j);
+							$operario[$j]=$tcs[$j];
 							$maquinaOperario=$maquinas[$j];
 							$faseCompletada[$j]=true;
 						}
 						else if($resto<0){
 							$tcOperario+=$tcs[$j];
-							array_push($operario, $j);
+							$operario[$j]=$tcs[$j];
 							$maquinaOperario=$maquinas[$j];
 							$faseCompletada[$j]=true;
 						}
 						else{
+							$operario[$j]=$tcs[$j]-$resto;
 							$tcs[$j]=$resto;
-							array_push($operario, $j);
 							$maquinaOperario=$maquinas[$j];
 							$tcOperario=$calcEquilibrado;
 						}
 					}
 					else if($tcOperario+$tcs[$j]<=$calcEquilibrado && $maquinaOperario===$maquinas[$j]){
 						$tcOperario+=$tcs[$j];
-						array_push($operario, $j);
+						$operario[$j]=$tcs[$j];
 						$faseCompletada[$j]=true;
 					}
 					else if($tcOperario+$tcs[$j]>$calcEquilibrado && $maquinaOperario===$maquinas[$j] && $tcOperario<$calcEquilibrado){
 						$resto=$tcs[$j]-($calcEquilibrado-$tcOperario);
+						$operario[$j]=$tcs[$j]-$resto;
 						$tcs[$j]=$resto;
 						$tcOperario=$calcEquilibrado;
-						array_push($operario, $j);
 					}
 				}
 			}
@@ -134,8 +134,9 @@ function datosTablaEquilibrado($arrOperarios, $nombre, $conn){
 	$arrFases=[];
 	foreach ($arrOperarios as $operario) {
 		$fasesOperario=[];
-		foreach ($operario as $fase) {
+		foreach ($operario as $fase => $tiempo) {
 			$datosFase=obtenerFase($conn, $nombre, $fase+1);
+			$datosFase[0]['tc']=$tiempo;
 			array_push($fasesOperario, $datosFase);
 		}
 		array_push($arrFases, $fasesOperario);
